@@ -1,0 +1,1 @@
+To initialize Parcel and begin running the app, navigate to the myFlix-client folder and run the following in the terminal: `npx parcel [path to index.html]` in this case the [path to index.html] would be replaced with `src/index.html` 
