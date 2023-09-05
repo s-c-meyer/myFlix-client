@@ -1,5 +1,6 @@
-$color: steelblue;
+//make any global styling changes here, above the import statement
+$primary: dodgerblue;
+$secondary: azure;
+$body-bg: lemonchiffon;
 
-.my-flix {
-  color: $color;
-}
+@import '~bootstrap/scss/bootstrap.scss';

@@ -1,30 +1,33 @@
+import "./movie-view.scss"
+import Button from "react-bootstrap/Button";
+
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
+    <div className="d-grid gap-3">
       <div>
-        <img alt="Movie Cover" src={movie.image} />
+        <img className="rounded-5" src={movie.image} />
       </div>
       <div>
-        <span>Title: </span>
+        <span style={{ fontWeight: 'bold' }}>Title: </span>
         <span>{movie.title}</span>
       </div>
       <div>
-        <span>Description: </span>
+        <span style={{ fontWeight: 'bold' }}>Description: </span>
         <span>{movie.description}</span>
       </div>
       <div>
-        <span>Director: </span>
+        <span style={{ fontWeight: 'bold' }}>Director: </span>
         <span>{movie.director}</span>
       </div>
       <div>
-        <span>Genre: </span>
+        <span style={{ fontWeight: 'bold' }}>Genre: </span>
         <span>{movie.genre}</span>
       </div>
       <div>
-        <span>Runtime: </span>
+        <span style={{ fontWeight: 'bold' }}>Runtime: </span>
         <span>{movie.runtime}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <Button variant="primary" onClick={onBackClick}>Back</Button>
     </div>
   );
 };
