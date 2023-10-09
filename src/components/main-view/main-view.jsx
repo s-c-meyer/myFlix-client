@@ -16,6 +16,48 @@ export const MainView = () => {
   Then when you click on one, you have to update the MainView to
   reflect that one of the movies has been clicked */
   const [selectedMovie, setSelectedMovie] = useState(null);
+  
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    fetch("https://moviesappmyflix-02f853986708.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((doc) => {
+          return {
+            id: doc._id,
+            title: doc.Title,
+            image: doc.ImagePath,
+            description: doc.Description,
+            director: doc.Director.Name,
+            genre: doc.Genre.Name,
+            runtime: doc.RuntimeMins + ' minutes'
+          };
+        });
+
+        setMovies(moviesFromApi);
+        });
+  }, [token]); //token must be added here, known as the dependency array. It ensures fetch is called every time token changes
+
+  //if there is no one logged in, display the login screen / signup screen
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        OR
+        <SignupView />
+      </>
+    );
+  }
 
   //if there is no one logged in, display the login screen
   // if (!user) {
