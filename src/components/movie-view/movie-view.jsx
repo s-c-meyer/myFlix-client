@@ -1,7 +1,12 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "./movie-view.scss"
-import Button from "react-bootstrap/Button";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams(); //useParams is used to access the movieId URL param
+
+  const movie = movies.find((m) => m.id === movieId);
+
   return (
     <div className="d-grid gap-3">
       <div>
@@ -27,7 +32,9 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span style={{ fontWeight: 'bold' }}>Runtime: </span>
         <span>{movie.runtime}</span>
       </div>
-      <Button variant="primary" onClick={onBackClick}>Back</Button>
+      <Link to={`/`}>
+        <button className="back-button">Back</button>
+      </Link>
     </div>
   );
 };
