@@ -3,7 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-// import { ProfileView } from "../profile-view/profile-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 import Row from "react-bootstrap/Row";
@@ -18,6 +18,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser? storedUser: null);
   const [token, setToken] = useState(storedToken? storedToken: null);
   const [movies, setMovies] = useState([]); //this hook has to be grouped with these ones above it, it throws an error when it is further down in the code
+  // const routeUsername = user.Username; //I had to add this line to make it work after sending the repo yesterday. So is the answer that I cannot use dot notation in the path= below?
 
    /* by setting the initial state of this variable to null, 
   this tells the app that no movie cards are currently clicked. 
@@ -102,26 +103,13 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView movies={movies} user={user} />
                   </Col>
                 )}
               </>
             }
           />
-          {/* <Route
-            path="/users/:user.username"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <Col md={8}>
-                    <ProfileView user={user} />
-                  </Col>
-                )}
-              </>
-            }
-          /> */}
+         
           <Route
             path="/"
             element={
@@ -138,6 +126,20 @@ export const MainView = () => {
                       </Col>
                     ))}
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/users/:routeUsername" //it appears this actually isn't even reading the username variable listed above?
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <ProfileView user={user} token={token} movies={movies}/>
+                  </Col>
                 )}
               </>
             }
