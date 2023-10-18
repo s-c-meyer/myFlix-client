@@ -103,7 +103,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} />
+                    <MovieView movies={movies} user={user} token={token} setUser={setUser} />
                   </Col>
                 )}
               </>
@@ -131,14 +131,15 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/users/:routeUsername" //it appears this actually isn't even reading the username variable listed above?
+            path = "/users/:Username"
+            // path="/users/:routeUsername" //it appears this actually isn't even reading the username variable listed above?
             element={
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView user={user} token={token} movies={movies}/>
+                    <ProfileView user={user} token={token} movies={movies} setUser={setUser}/>
                   </Col>
                 )}
               </>
