@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import "./movie-view.scss"
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ movies, user, token, setUser }) => {
+export const MovieView = ({ user, token, setUser }) => {
+  const movies = useSelector((state) => state.movies.list); //get the movies from the store 
   const { movieId } = useParams(); //useParams is used to access the movieId URL param
 
   const movie = movies.find((m) => m.id === movieId);
@@ -16,29 +18,16 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     favoriteMovies.includes(movies.id)
   );
 
-  // let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
-  // console.log(favoriteMovies.length);
-  // console.log(favoriteMovies);
-
-  // const isIdContained = favoriteMovies.some(id => id.includes(movieId));
-  // console.log(isIdContained);
-
   function favoriteMovie() {
-    // console.log(movieId);
-    // console.log(user.Username);
-    // const url = "https://moviesappmyflix-02f853986708.herokuapp.com/users/" + user.Username + "/movies/" + movieId; 
-    // console.log(url);
     fetch(`https://moviesappmyflix-02f853986708.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}` //still says 422?
+        Authorization: `Bearer ${token}`
       }
     }).then((response) => {
       if (response.ok) {
         return response.json();
-        // alert("Movie Favorited Successfully!");
-        // window.location.reload();
-      } else { //could write out error msgs for further errors. 403, 422, ... error msg built into fetch response
+      } else {
         alert("Something went wrong");
         return false;
       }
@@ -54,10 +43,6 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   };
 
   const unfavoriteMovie = () => {
-    // console.log(movieId);
-    // console.log(user.Username);
-    // const url = "https://moviesappmyflix-02f853986708.herokuapp.com/users/" + user.Username + "/movies/" + movieId; 
-    // console.log(url);
     fetch(`https://moviesappmyflix-02f853986708.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
       method: "DELETE",
       headers: {
@@ -65,11 +50,8 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       }
     }).then((response) => {
       if (response.ok) {
-        // alert("Movie Unfavorited Successfully!");
-        // console.log(isFavorite);
-        // window.location.reload();
         return response.json();
-      } else { //could write out error msgs for further errors. 403, 422, ... error msg built into fetch response
+      } else { 
         alert("Something went wrong");
         return false;
       }
@@ -110,20 +92,17 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         <span>{movie.runtime}</span>
       </div>
       <Link to={`/`}>
-        <button className="back-button">Back</button>
+        <Button className="back-button">Back</Button>
       </Link>
       {isFavorite ? (
-        <Button onClick={unfavoriteMovie}>
+        <Button className="fav-button" onClick={unfavoriteMovie}>
           Unfavorite
         </Button>
       ) : (
-        <Button onClick={favoriteMovie}>
+        <Button className="fav-button" onClick={favoriteMovie}>
           Favorite
         </Button>
       )}
-      {/* <Button onClick={favoriteMovie}>
-        Favorite this Movie!
-      </Button> */}
     </div>
   );
 };
