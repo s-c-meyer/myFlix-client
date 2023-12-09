@@ -28,3 +28,9 @@ $body-bg: lemonchiffon;
 .movie-card {
   text-decoration: none;
 }
+
+@media screen and (max-width: 1200px) {
+  .card-img {
+    height: 60%;
+  }
+}

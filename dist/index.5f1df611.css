@@ -13225,4 +13225,10 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 
+@media screen and (width <= 1200px) {
+  .card-img {
+    height: 60%;
+  }
+}
+
 /*# sourceMappingURL=index.5f1df611.css.map */
