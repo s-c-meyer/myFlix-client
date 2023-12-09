@@ -9,7 +9,7 @@ import { Row } from "react-bootstrap";
 
 
 export const ProfileView = ({ user, movies, token, setUser }) => {
-  const [username, setUsername] = useState(user.Username); //by putting the user.username into useState, you make the app use the current username of the signed in profile.
+  const [username, setUsername] = useState(user.Username); 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
@@ -65,15 +65,10 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
     })
   };
 
-
-
-
-  //set the user's favorite movies to be passed to the MovieCard for display on the profile page
   let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
 
   return (
-    <>
-      {/* display user information and allow for changes to it */}
+    <>  
       <Form className="m-1" onSubmit={handleSubmit}>
         <Form.Group className="mb-4" controlId="formUsername">
           <Form.Label>Username:</Form.Label>
@@ -83,19 +78,10 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
             onChange={(e) => setUsername(e.target.value)}
             required
             minLength="3"
+            plaintext
           />
         </Form.Group>
-
-        <Form.Group className="mb-4" controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Form.Group>
-
+  
         <Form.Group className="mb-4" controlId="formEmail">
           <Form.Label>Email:</Form.Label>
           <Form.Control
@@ -127,7 +113,7 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
         ))}
       </Row>
       
-      <Button className="mt-5" variant="danger" onClick={deleteProfile}>
+      <Button className="mt-5 mb-5" variant="danger" onClick={deleteProfile}>
         Delete Your Account
       </Button>
     </>

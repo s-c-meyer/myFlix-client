@@ -1,5 +1,12 @@
 img {
-  width: 100%;
+  width: 75%;
+}
+
+@media screen and (width <= 992px) {
+  img {
+    width: 100%;
+    margin-bottom: 1em;
+  }
 }
 
 :root, [data-bs-theme="light"] {

@@ -45,7 +45,7 @@ export const MainView = () => {
 
         dispatch(setMovies(moviesFromApi));
         });
-  }, [token]); //token must be added here, known as the dependency array. It ensures fetch is called every time token changes
+  }, [token]); 
 
 
   return (

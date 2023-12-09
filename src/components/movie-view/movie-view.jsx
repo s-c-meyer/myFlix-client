@@ -6,8 +6,8 @@ import "./movie-view.scss"
 import { useSelector } from "react-redux";
 
 export const MovieView = ({ user, token, setUser }) => {
-  const movies = useSelector((state) => state.movies.list); //get the movies from the store 
-  const { movieId } = useParams(); //useParams is used to access the movieId URL param
+  const movies = useSelector((state) => state.movies.list); 
+  const { movieId } = useParams(); 
 
   const movie = movies.find((m) => m.id === movieId);
 
@@ -16,7 +16,7 @@ export const MovieView = ({ user, token, setUser }) => {
   );
 
   useEffect(() => {
-    window.scrollTo(0,0); //scroll to the top of the page on page load
+    window.scrollTo(0,0); 
   }, []);
 
   function favoriteMovie() {
