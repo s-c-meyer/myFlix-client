@@ -2991,9 +2991,13 @@ $RefreshReg$(_c, "MyFlixApplication");
   window.$RefreshSig$ = prevRefreshSig;
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 },{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9GsF7","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"hUPXr","./redux/store":"bDp2K","react-redux":"bdVon"}],"iTorj":[function(require,module,exports) {
 =======
 },{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9GsF7","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"hUPXr"}],"iTorj":[function(require,module,exports) {
+>>>>>>> Stashed changes
+=======
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9GsF7","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ"}],"iTorj":[function(require,module,exports) {
 >>>>>>> Stashed changes
 "use strict";
 module.exports = require("ee51401569654d91");
@@ -33942,6 +33946,7 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< Updated upstream
 },{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"hUPXr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9GsF7","react":"21dqq","react-bootstrap/Form":"iBZ80","react-bootstrap/Button":"aPzUt"}],"cMC39":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -49383,5 +49388,8 @@ const store = (0, _toolkit.configureStore)({
 });
 
 },{"@reduxjs/toolkit":"lL1Ef","./reducers/movies":"l0qwl","@parcel/transformer-js/src/esmodule-helpers.js":"hUPXr"}]},["3Qfbm","kC3i9","d8Dch"], "d8Dch", "parcelRequireaec4")
+=======
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"hUPXr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9GsF7","react":"21dqq"}],"lJZlQ":[function() {},{}]},["3Qfbm","kC3i9","d8Dch"], "d8Dch", "parcelRequireaec4")
+>>>>>>> Stashed changes
 
 //# sourceMappingURL=index.b4b6dfad.js.map
