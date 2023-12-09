@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { MovieCard } from "../movie-card/movie-card";
 import Col from "react-bootstrap/Col";
+import { Row } from "react-bootstrap";
 
 
 
@@ -118,13 +119,14 @@ export const ProfileView = ({ user, movies, token, setUser }) => {
           Submit
         </Button>
       </Form>
-
-      {favoriteMovies.map((movie) => (
-        <Col className="mb-4" key={movie.id} md={3}>
-          <MovieCard movie={movie} />
-        </Col>
-      ))}
-
+      <Row>
+        {favoriteMovies.map((movie) => (
+            <Col className="mb-4" key={movie.id} md={4}>
+            <MovieCard movie={movie} />
+          </Col>
+        ))}
+      </Row>
+      
       <Button className="mt-5" variant="danger" onClick={deleteProfile}>
         Delete Your Account
       </Button>

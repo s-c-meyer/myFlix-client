@@ -11,18 +11,13 @@ export const MovieView = ({ user, token, setUser }) => {
 
   const movie = movies.find((m) => m.id === movieId);
 
-   //set the user's favorite movies to be passed to the MovieCard for display on the profile page
-   let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id));
-
   const [isFavorite, setIsFavorite] = useState(
-    favoriteMovies.includes(movies.id)
+    user.FavoriteMovies.includes(movie.id)
   );
 
   useEffect(() => {
     window.scrollTo(0,0); //scroll to the top of the page on page load
-  }, [isFavorite]);
-
-  console.log('Is this movie a favorite? ' + isFavorite);
+  }, []);
 
   function favoriteMovie() {
     fetch(`https://moviesappmyflix-02f853986708.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
@@ -71,47 +66,6 @@ export const MovieView = ({ user, token, setUser }) => {
       }
     });
   };
-    
-  // return (
-  //   <div className="d-grid gap-3">
-  //     <div>
-  //       <img className="rounded-5" src={movie.image} />
-  //     </div>
-  //     <div>
-  //       <span style={{ fontWeight: 'bold' }}>Title: </span>
-  //       <span>{movie.title}</span>
-  //     </div>
-  //     <div>
-  //       <span style={{ fontWeight: 'bold' }}>Description: </span>
-  //       <span>{movie.description}</span>
-  //     </div>
-  //     <div>
-  //       <span style={{ fontWeight: 'bold' }}>Director: </span>
-  //       <span>{movie.director}</span>
-  //     </div>
-  //     <div>
-  //       <span style={{ fontWeight: 'bold' }}>Genre: </span>
-  //       <span>{movie.genre}</span>
-  //     </div>
-  //     <div>
-  //       <span style={{ fontWeight: 'bold' }}>Runtime: </span>
-  //       <span>{movie.runtime}</span>
-  //     </div>
-  //     <Link to={`/`}>
-  //       <Button className="back-button">Back</Button>
-  //     </Link>
-  //     {isFavorite ? (
-  //       <Button className="fav-button" onClick={unfavoriteMovie}>
-  //         Unfavorite
-  //       </Button>
-  //     ) : (
-  //       <Button className="fav-button" onClick={favoriteMovie}>
-  //         Favorite
-  //       </Button>
-  //     )}
-  //   </div>
-  // );
-
 
   return (
     <>
@@ -150,8 +104,6 @@ export const MovieView = ({ user, token, setUser }) => {
         </Button>
       )}
       </div>
-
-      
     </>
   );
 };
